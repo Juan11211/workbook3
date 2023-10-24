@@ -18,9 +18,7 @@ let zipJason = "12345";
 function displayMailingLabel(name, address, city, state, zip) {
     console.log("Name: " + name);
     console.log("Address: " + address);
-    console.log("City: " + city);
-    console.log("State: " + state);
-    console.log("ZIP: " + zip);
+    console.log(`${city}, ${state}, ${zip}`)
 }
 
 // Invoke the function to display mailing labels for Freddy Krueger
@@ -29,8 +27,7 @@ displayMailingLabel(nameJason, addressJason, cityJason, stateJason, zipJason);
 
 
 // accepting 2 parameters
-let num1;
-let num2;
+
 
 function addNumbers(num1, num2){
     let sum = num1 + num2
