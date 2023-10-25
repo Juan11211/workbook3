@@ -16,8 +16,4 @@ function displayCtoFConversion(celsius) {
     }
 }
 
-let celsiusValues = [100, 45, 19, 0, -7, -40];
-
-for (let celsius of celsiusValues) {
-    displayCtoFConversion(celsius);
-}
+displayCtoFConversion(70)
