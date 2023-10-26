@@ -10,7 +10,7 @@ const dayOfWeekIndex = currentDate.getDay();
 
 // Get the day, month, and year
 const day = currentDate.getDate();
-const month = currentDate.getMonth(); 
+const month = currentDate.getMonth() + 1; 
 const year = currentDate.getFullYear();
 
 // Get the weekday name
