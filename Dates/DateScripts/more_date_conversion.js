@@ -1,11 +1,15 @@
-"use strict"
+function formatDate(date) {
+    const month = date.getMonth() + 1; // Month is zero-based
+    const day = date.getDate();
+    const year = date.getFullYear();
 
-let birthday = new Date("09/17/1995").toLocaleString();
+    return `${month}/${day}/${year}`;
+}
 
-let sonsBirthday = new Date("003/21/2016 ").toLocaleString();
+const birthday = new Date('09171995');
+const momsBirthday = new Date('09111971');
+const dadsBirthday = new Date(1971, 3, 3); // Replace yyyy, m, and d with the year, month, and day for your dad's birthday
 
-let daughterBday = new Date("2019/09/02").toLocaleString();
-
-console.log(birthday)
-console.log(sonsBirthday)
-console.log(daughterBday)
+console.log('Birthday:', formatDate(birthday));
+console.log("Mom's Birthday:", momsBirthday.toDateString());
+console.log("Dad's Birthday:", formatDate(dadsBirthday));
