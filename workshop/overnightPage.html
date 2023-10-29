@@ -38,26 +38,113 @@
             </div>
           </nav>
     </header>
-   
+    
     <main class="container">
-        <div class="container text-center p-3">
-            <h2>Overnight Cost Estimator</h2>
-        </div>
+      <div class="container">
+        <h1 class="mt-4">Get a Price Quote</h1>
+        <form class="form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
 
-        <div class="container ">
-            <div class="row mb-3">
-                <div class="d-block col-md-6">
-                    <label for="emailInput">Email:</label>
-                    <input type="text" id="emailInput">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="checkin">Check-in Date:</label>
+                <input type="date" class="form-control" id="checkin" name="checkin" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nights">Number of Nights (1 - 28):</label>
+                <input type="number" class="form-control" id="nights" name="nights" min="1" max="28" required>
+            </div>
+
+            <div class="form-group">
+                <label>Room Type:</label><br>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="queen" name="roomType" value="Queen">
+                    <label class="form-check-label" for="queen">Queen</label>
                 </div>
-                <div class="d-blockcol-md-6">
-                    <label for="nameInput">Name:</label>
-                    <input type="text" id="emailInput"  />
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="king" name="roomType" value="King">
+                    <label class="form-check-label" for="king">King</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="suite" name="roomType" value="2-Bedroom Suite">
+                    <label class="form-check-label" for="suite">2-Bedroom Suite</label>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label for="adults">Number of Adults (1 - 4):</label>
+                <input type="number" class="form-control" id="adults" name="adults" min="1" max="4" required>
+            </div>
+
+            <div class="form-group">
+                <label for="children">Number of Children (0 - 4):</label>
+                <input type="number" class="form-control" id="children" name="children" min="0" max="4" required>
+            </div>
+
+            <div class="form-group">
+                <label>Discounts:</label><br>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="none" name="discount" value="None">
+                    <label class="form-check-label" for="none">None</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="aaa" name="discount" value="aaa/senior">
+                    <label class="form-check-label" for="aaa">AAA/Senior (10%)</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="military" name="discount" value="military">
+                    <label class="form-check-label" for="military">Military (20%)</label>
+                </div>
+            </div>
+
+            <button type="submit" id="submitBtn" class="btn btn-dark">Get Quote</button>
+        </form>
+    </div>
+
+    <div class="container p-3 border mt-3">
+      <div class="container">
+        <div class="">
+           <h3>Bill Amount:</h3>
         </div>
+      <div class="row">
+        <div class="col-md-3">
+          <p>Room Cost:</p>
+        </div>
+        <div class="col-md-3">
+         <p>Discount:</p>
+        </div>
+        <div class="col-md-3">
+          <p>Discounted Room Cost:</p>
+        </div>
+        <div class="col-md-3">
+         <p>Tax: </p>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+              <p>Total Stay:</p>
+          </div>
+        </div>
+       </div>
+        
+        
+        
+        
+      </div>
+     
+      
+
+    </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="/scripts//overnight.js"></script>
   </body>
 </html>
