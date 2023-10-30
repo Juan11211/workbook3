@@ -1,74 +1,73 @@
 window.onload = function() {
-
-    // // form will submit everytime it changes
-    // let form = document.querySelector('form');
-    // form.onchange = submitBtnClicked;
-
     let submitBtn = document.getElementById("submitBtn");
     submitBtn.onclick = submitBtnClicked;
-
   }
 
 
   function submitBtnClicked(event) {
-    console.log("Button clicked"); 
+    console.log("Button clicked");
     event.preventDefault();
-  
+
     const checkinDate = document.getElementById("checkin").value;
     const roomType = document.querySelector('input[name="roomType"]:checked').value;
     const discount = document.querySelector('input[name="discount"]:checked').value;
     const adults = Number(document.getElementById("adults").value);
     const children = Number(document.getElementById("children").value);
-  
+    const messageDiv = document.getElementById("messageDiv");
+    const confirmationNumberDiv = document.getElementById("confirmationNumber"); // Get confirmation number div
+
     // Define the maximum occupancy for each room type
     const maxOccupancy = {
       Queen: 5,
       King: 2,
       "2-Bedroom Suite": 6,
     };
-  
-    // Check if the selected room type can accommodate the number of guests
-    if (adults + children > maxOccupancy[roomType]) {
-      const messageDiv = document.getElementById("messageDiv");
-      messageDiv.textContent = "The room you selected will not hold your party.";
-      // Clear previous cost calculations
-      clearCostCalculations();
-    } else {
-      clearCostCalculations(); // Clear any previous message
-      const roomRate = getRoomRate(checkinDate, roomType);
-      const nights = Number(document.getElementById("nights").value);
-      const totalRoomCost = roomRate * nights;
-      
+
+    const roomRate = getRoomRate(checkinDate, roomType);
+    const nights = Number(document.getElementById("nights").value);
+    
+    // Calculate the total room cost, discount, tax, and total cost
+    let totalRoomCost = 0;
+    let discountAmount = 0;
+    let taxAmount = 0;
+    let totalCost = 0;
+
+    if (adults + children <= maxOccupancy[roomType]) {
+      totalRoomCost = roomRate * nights;
       let discountPercentage = 0;
       if (discount === "aaa/senior") {
         discountPercentage = 0.1;
-      } else {
+      } else if (discount === "military") {
         discountPercentage = 0.2;
       }
-      
-      const discountAmount = discountPercentage * totalRoomCost;
+      discountAmount = discountPercentage * totalRoomCost;
       const taxRate = 0.12;
-      const taxAmount = taxRate * (totalRoomCost - discountAmount);
-      const totalCost = totalRoomCost - discountAmount + taxAmount;
-  
-      // Display the calculated values
-      document.getElementById("originalRoomCost").textContent = "Room Cost: $" + totalRoomCost.toFixed(2);
-      document.getElementById("discountAmount").textContent = "Discount: $" + discountAmount.toFixed(2);
-      document.getElementById("discountedRoomCost").textContent = "Discounted Room Cost: $" + (totalRoomCost - discountAmount).toFixed(2);
-      document.getElementById("taxAmount").textContent = "Tax: $" + taxAmount.toFixed(2);
-      document.getElementById("totalCost").textContent = "Total Stay: $" + totalCost.toFixed(2);
+      taxAmount = taxRate * (totalRoomCost - discountAmount);
+      totalCost = totalRoomCost - discountAmount + taxAmount;
+      messageDiv.innerText = ""; // Clear the message if the room can hold the party
+    } else {
+      messageDiv.innerText = "The room you selected will not hold your party.";
+      confirmationNumberDiv.innerText = ""; // Clear the confirmation number when the room is full
     }
-  }
-  
-  function clearCostCalculations() {
-    const messageDiv = document.getElementById("messageDiv");
-    messageDiv.textContent = "";
-    document.getElementById("originalRoomCost").textContent = "Room Cost: $0.00";
-    document.getElementById("discountAmount").textContent = "Discount: $0.00";
-    document.getElementById("discountedRoomCost").textContent = "Discounted Room Cost: $0.00";
-    document.getElementById("taxAmount").textContent = "Tax: $0.00";
-    document.getElementById("totalCost").textContent = "Total Stay: $0.00";
-  }
+
+    // Display the calculated values as before
+    document.getElementById("originalRoomCost").textContent = "Room Cost: $" + totalRoomCost.toFixed(2);
+    document.getElementById("discountAmount").textContent = "Discount: $" + discountAmount.toFixed(2);
+    document.getElementById("discountedRoomCost").textContent = "Discounted Room Cost: $" + (totalRoomCost - discountAmount).toFixed(2);
+    document.getElementById("taxAmount").textContent = "Tax: $" + taxAmount.toFixed(2);
+    document.getElementById("totalCost").textContent = "Total Stay: $" + totalCost.toFixed(2);
+
+    if (adults + children <= maxOccupancy[roomType]) {
+      const name = document.getElementById("name").value;
+      const date = new Date(checkinDate);
+      const monthYear = (date.getMonth() + 1).toString().padStart(2, "0") + date.getFullYear();
+      const stayDays = nights;
+      const confirmationNumber = `${name.substr(0, 3)}-${monthYear}-${stayDays}:${adults}:${children}`;
+
+      // Display the confirmation number only if the room can hold your party
+      confirmationNumberDiv.textContent = "Confirmation Number: " + confirmationNumber;
+    }
+}
 
 
   /// passing in checkIn and roomType
