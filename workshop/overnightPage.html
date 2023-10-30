@@ -54,9 +54,9 @@
             </div>
 
             <div class="form-group">
-                <label for="checkin">Check-in Date:</label>
-                <input type="date" class="form-control" id="checkin" name="checkin" required>
-            </div>
+              <label for="checkin">Check-in Date:</label>
+              <input type="date" class="form-control" id="checkin" name="checkin" required>
+            </div>          
 
             <div class="form-group">
                 <label for="nights">Number of Nights (1 - 28):</label>
@@ -64,7 +64,7 @@
             </div>
 
             <div class="form-group">
-                <label>Room Type:</label><br>
+                <label>Room Type:</label>
                 <div class="form-check">
                     <input type="radio" class="form-check-input" id="queen" name="roomType" value="Queen">
                     <label class="form-check-label" for="queen">Queen</label>
@@ -90,7 +90,7 @@
             </div>
 
             <div class="form-group">
-                <label>Discounts:</label><br>
+                <label>Discounts:</label>
                 <div class="form-check">
                     <input type="radio" class="form-check-input" id="none" name="discount" value="None">
                     <label class="form-check-label" for="none">None</label>
@@ -116,27 +116,26 @@
         </div>
       <div class="row">
         <div class="col-md-3">
-          <p>Room Cost:</p>
+          <p id="originalRoomCost">Room Cost:</p>
         </div>
         <div class="col-md-3">
-         <p>Discount:</p>
+         <p id="discountAmount">Discount:</p>
         </div>
         <div class="col-md-3">
-          <p>Discounted Room Cost:</p>
+          <p id="discountedRoomCost">Discounted Room Cost:</p>
         </div>
         <div class="col-md-3">
-         <p>Tax: </p>
+         <p id="taxAmount">Tax: </p>
         </div>
         <div class="row">
-          <div class="col-md-12">
-              <p>Total Stay:</p>
+          <div class="col-md-6">
+              <p id="totalCost">Total Stay:</p>
+          </div>
+          <div class="col-md-6">
+            <div id="messageDiv"></div>
           </div>
         </div>
        </div>
-        
-        
-        
-        
       </div>
      
       
