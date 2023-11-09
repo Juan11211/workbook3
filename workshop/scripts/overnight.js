@@ -41,6 +41,7 @@ window.onload = function() {
         discountPercentage = 0.2;
       }
       discountAmount = discountPercentage * totalRoomCost;
+      
       const taxRate = 0.12;
       taxAmount = taxRate * (totalRoomCost - discountAmount);
       totalCost = totalRoomCost - discountAmount + taxAmount;
@@ -64,7 +65,7 @@ window.onload = function() {
       const stayDays = nights;
       const confirmationNumber = `${name.substr(0, 3)}-${monthYear}-${stayDays}:${adults}:${children}`;
 
-      // Display the confirmation number only if the room can hold your party
+      // Display the confirmation number 
       confirmationNumberDiv.textContent = "Confirmation Number: " + confirmationNumber;
     }
 }
